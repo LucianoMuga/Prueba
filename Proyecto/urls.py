@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from MVT.views import index, mostrarAnimal
+from MVT import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("index/", index),
-    path("mostrar_animales/", mostrarAnimal)
+    path("index/", views.index),
+    path("mostrar_animales/", views.mostrarAnimal),
+    path("estatico/", views.crear_statico),
 ]

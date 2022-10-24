@@ -1,0 +1,11 @@
+{% extends 'MVT/base.html' %}
+{%  block titulo  %} Agregar Animal {% endblock %}
+{% block contenido %}
+    <form action="/mi-animal/alta" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+  </form>
+  <h2 style="color:green"> {{msg_exito}} </h2>
+
+{% endblock %}

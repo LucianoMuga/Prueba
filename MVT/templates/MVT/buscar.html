@@ -1,0 +1,16 @@
+{% extends 'MVT/base.html' %}
+{% block titulo %} Buscar Animal por nombre {% endblock %}
+{% block contenido %}
+    
+      <form action="/buscar-animal/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+      </form>
+
+      {% for a in lista_animales %}
+        <ul>
+            <li> Nombre : {{a.nombre}} , Raza : {{a.raza}}, Edad : {{a.edad}} </li>
+        </ul>
+        {% endfor %}
+      {% endblock %}

@@ -6,4 +6,6 @@ Animal(nombre = "Apolo", raza = "Caniche Toy", edad = 10).save()
 Animal(nombre = "Atena", raza = "Caniche Toy", edad = 10).save()
 Animal(nombre = "Uma", raza = "Caniche Toy", edad = 7).save()
 
+
+
 print("Se cargaron con exito los objetos")

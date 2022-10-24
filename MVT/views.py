@@ -65,10 +65,10 @@ class AltaAnimal(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
-            msg_exito = f"Se cargo con exito le animal {form.cleaned_data.get('nombre')}"
+            msg_exito = f"Se cargo con exito el animal {form.cleaned_data.get('nombre')}"
             form = self.form_class(initial = self.initial)
             return render(request, self.template_name, {'form' : form,
-                                                        'msg_extio' : msg_exito})
+                                                        'msg_exito' : msg_exito})
             
         return render(request, self.template_name, {"form" : form})
 

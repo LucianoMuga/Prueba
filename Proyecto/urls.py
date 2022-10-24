@@ -9,5 +9,5 @@ urlpatterns = [
     path("estatico/", views.crear_statico),
     path("segundo_estatico", views.segundo_estatico),
     path("buscar-animal/", views.BuscarAnimal.as_view()),
-    path("mi-animal/alta", views.AltaAnimal.as_view())
+    path("mi-animal/alta", views.AltaAnimal.as_view()),
 ]

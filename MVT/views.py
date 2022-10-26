@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from MVT.models import Animal
+from MVT.models import Animal, Cliente, Empleado
 from django.http import HttpResponse
-from MVT.forms import Buscar, AnimalForm
+from MVT.forms import Buscar, AnimalForm, EmpleadoForm, ClienteForm
 from django.views import View
 
 def index(request):
@@ -46,9 +46,13 @@ class BuscarAnimal(View):
         if form.is_valid():
             nombre = form.cleaned_data.get("nombre")
             lista_animales = Animal.objects.filter(nombre__icontains = nombre).all()
+            lista_empleado = Empleado.objects.filter(nombre__icontains = nombre).all()
+            lista_cliente = Cliente.objects.filter(nombre__icontains = nombre).all()
             form = self.form_class(initial = self.initial)
             return render(request, self.template_name, {"form" : form, 
-                                                        "lista_animales" : lista_animales}) 
+                                                        "lista_animales" : lista_animales,
+                                                        "lista_empleado" : lista_empleado,
+                                                        "lista_cliente" : lista_cliente}) 
         return render(request, self.template_name, {"form" : form})        
 
 class AltaAnimal(View):
@@ -71,6 +75,46 @@ class AltaAnimal(View):
                                                         'msg_exito' : msg_exito})
             
         return render(request, self.template_name, {"form" : form})
-
-          
     
+class AltaEmpleado(View):
+    
+    form_class = EmpleadoForm
+    template_name = "MVT/alta_empleado.html"
+    initial = {"nombre" : "" , "area" : "" , "antiguedad" : ""}
+    
+    
+    def get(self, request):
+        form = self.form_class(initial = self.initial)
+        return render(request, self.template_name, {"form" : form,})
+    
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            msg_exito = f"Se cargo con extio {form.cleaned_data.get('nombre')}"
+            form = self.form_class(initial = self.initial)
+            return render(request, self.template_name, {'form' : form,
+                                                    'msg_exito' : msg_exito})
+        
+        return render(request, self.template_name, {"form" : form,})
+        
+class AltaCliente(View):
+    
+    form_class = ClienteForm
+    template_name = "MVT/alta_cliente.html"
+    initial = {"nombre" : "" , "producto" : "" , "numero_de_cliente" : ""}
+    
+    def get(self, request):
+        form = self.form_class(initial = self.initial)
+        return render(request, self.template_name, {"form" : form})
+    
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            msg_exito = f"Se cargo con extio {form.cleaned_data.get('nombre')}"
+            form = self.form_class(initial = self.initial)
+            return render(request, self.template_name, {'form' : form,
+                                                    'msg_exito' : msg_exito})
+        
+        return render(request, self.template_name, {"form" : form,})

@@ -2,7 +2,7 @@
 {% block titulo %} Buscar Animal por nombre {% endblock %}
 {% block contenido %}
     
-      <form action="/buscar-animal/" method="post">
+      <form action="/buscar/" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit">
@@ -13,4 +13,17 @@
             <li> Nombre : {{a.nombre}} , Raza : {{a.raza}}, Edad : {{a.edad}} </li>
         </ul>
         {% endfor %}
+
+      {% for a in lista_empleado %}
+        <ul>
+            <li> Nombre : {{a.nombre}} , Area : {{a.area}}, Años de antiguedad : {{a.años_de_antiguedad}} </li>
+        </ul>
+        {% endfor %}
+
+      {% for a in lista_cliente %}
+        <ul>
+            <li> Nombre : {{a.nombre}} , Producto : {{a.producto}}, Numero de cliente : {{a.numero_de_cliente}} </li>
+        </ul>
+        {% endfor %}
+
       {% endblock %}

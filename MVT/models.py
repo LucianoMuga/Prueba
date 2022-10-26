@@ -1,4 +1,3 @@
-from unittest.util import _MAX_LENGTH
 from django.db import models
 
 class Animal(models.Model):
@@ -16,6 +15,11 @@ class Empleado(models.Model):
     
     def __str__(self):
         return f"{self.nombre}, {self.area}, {self.años_de_antiguedad}, {self.id}"
+    
+class Cliente(models.Model):
+    nombre = models.CharField(max_length = 20)
+    producto = models.CharField(max_length = 30)
+    numero_de_cliente = models.IntegerField()
  
 
 # Create your models here.

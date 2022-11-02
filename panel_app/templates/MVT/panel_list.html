@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <ul>
+
+            {% block buscar %} {% endblock %}
+            
+            {% for animal in object_list %}
+                {% comment %} <li >{{familiar}}</li> {% endcomment %}
+                <li> Nombre: {{animal.nombre}}, raza: {{animal.raza}}, edad: {{animal.edad}}, id: {{animal.id}}</li>
+                    <a href="{% url 'animal-borrar' animal.id %}">Borrar</a>
+                    <a href="{% url 'animal-actualizar' animal.id %}">actualizar</a>
+            {% endfor %}    
+            </ul>
+        
+        <script src="" async defer></script>
+    </body>
+</html>

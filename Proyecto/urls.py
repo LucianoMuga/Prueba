@@ -1,6 +1,7 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from MVT import views
+# from blog.views import index as blog_index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,4 +13,7 @@ urlpatterns = [
     path("mi-animal/alta", views.AltaAnimal.as_view()),
     path("empleado/alta", views.AltaEmpleado.as_view()),
     path("cliente/alta", views.AltaCliente.as_view()),
+    path("panel-app/", include("panel_app.urls")),
+    # path("blog/", blog_index),
+    path("blog/", include("blog.urls")),
 ]

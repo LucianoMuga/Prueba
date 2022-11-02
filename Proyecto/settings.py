@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'MVT.apps.MvtConfig',
+    'panel_app.apps.PanelAppConfig',
+    'blog.apps.BlogConfig',
+    
 ]
 
 MIDDLEWARE = [
